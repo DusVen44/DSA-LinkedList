@@ -62,3 +62,13 @@ class LinkedList {
         prevNode.next = currNode.next;
     };
 };
+
+function main() {
+    let SLL = new LinkedList();
+    // let list = ['Apollo', 'Boomer', 'Helo', 'Husker', 'Starbuck'];
+    SLL.insertFirst('Apollo');
+    console.log(SLL);
+    return SLL;
+}
+
+console.log(main())
