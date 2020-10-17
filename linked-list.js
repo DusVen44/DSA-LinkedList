@@ -41,11 +41,7 @@ class LinkedList {
             console.log(`${key} not found`) //console log error
             return; //return nothing
         };
-            prevNode.next = new _Node(item, currNode);
-        
-        //if key is found, item will be inserted before node
-        //item.next needs to equal previous.next
-        //item becomes previous node to the key
+        prevNode.next = new _Node(item, currNode); //insert new node after previous node
     }
 
     insertAfter(item, key) {
@@ -62,10 +58,7 @@ class LinkedList {
             console.log(`${key} not found`) //console log error
             return; //return nothing
         };
-        if (currNode === key) { //when you find the key
-            nextNode
-            currNode.next = new _Node(item, null)
-        }
+        currNode.next = new _Node(item, nextNode) //insert new node after current node
     }
 
     find(item) { //retrieve item from Linked List
@@ -120,5 +113,5 @@ let myLinkedList = main();
 
 // myLinkedList.remove('Husker');
 
-myLinkedList.insertBefore('New', 'Apollo');
+myLinkedList.insertAfter('AFTER', 'Husker');
 console.log(myLinkedList)
