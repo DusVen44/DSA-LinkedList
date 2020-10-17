@@ -1,7 +1,7 @@
 class _Node {
     constructor(value, next) {
         this.value = value; //holds the data
-        this.next = next; //pointer to the new code
+        this.next = next; //pointer to the next node
     };
 };
 
@@ -25,6 +25,48 @@ class LinkedList {
             tempNode.next = new _Node(item, null) //when it's the last item
         };                                        //pointer is null
     };
+
+    insertBefore(item, key) {
+        if (!this.head) { //if list is empty
+            console.log("List is empty")
+            return; //return nothing
+        };
+        let currNode = this.head; //start at beginning
+        let prevNode = this.head; //keep track of previous node
+        while ((currNode !== null) && (currNode.value !== key)) { //while there are items in the list and you have not found the key
+            prevNode = currNode; //save previouse node
+            currNode = currNode.next; //current node becomes next node
+        };
+        if (currNode === null) { //if you reach the end of the list
+            console.log(`${key} not found`) //console log error
+            return; //return nothing
+        };
+            prevNode.next = new _Node(item, currNode);
+        
+        //if key is found, item will be inserted before node
+        //item.next needs to equal previous.next
+        //item becomes previous node to the key
+    }
+
+    insertAfter(item, key) {
+        if (!this.head) { //if list is empty
+            console.log("List is empty")
+            return; //return nothing
+        };
+        let currNode = this.head; //start at beginning
+        let nextNode = currNode.next; //keep track of next node
+        while ((currNode !== null) && (currNode.value !== key)) { //while there are items in the list and you have not found the key
+            currNode = currNode.next;
+        };
+        if (currNode === null) { //if you reach the end of the list
+            console.log(`${key} not found`) //console log error
+            return; //return nothing
+        };
+        if (currNode === key) { //when you find the key
+            nextNode
+            currNode.next = new _Node(item, null)
+        }
+    }
 
     find(item) { //retrieve item from Linked List
         let currNode = this.head; //start at the head
@@ -65,10 +107,18 @@ class LinkedList {
 
 function main() {
     let SLL = new LinkedList();
-    // let list = ['Apollo', 'Boomer', 'Helo', 'Husker', 'Starbuck'];
     SLL.insertFirst('Apollo');
-    console.log(SLL);
+    SLL.insertFirst('Boomer');
+    SLL.insertFirst('Helo');
+    SLL.insertFirst('Husker');
+    SLL.insertFirst('Starbuck');
     return SLL;
 }
 
-console.log(main())
+let myLinkedList = main();
+// myLinkedList.insertFirst('Tauhida');
+
+// myLinkedList.remove('Husker');
+
+myLinkedList.insertBefore('New', 'Apollo');
+console.log(myLinkedList)
